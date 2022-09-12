@@ -15,19 +15,19 @@
   with_items:
     - regexp: 'PasswordAuthentication'
       line: 'PasswordAuthentication {{ security_ssh_password_authentication }}'
-    - regexp: "^#\s*PermitRootLogin.*$"
+    - regexp: "PermitRootLogin"
       line: "PermitRootLogin {{ security_ssh_permit_root_login }}"
-    - regexp: "^#\s*Port.*$"
+    - regexp: "Port"
       line: "Port {{ security_ssh_port }}"
-    - regexp: "^#\s*UseDNS.*$"
+    - regexp: "UseDNS"
       line: "UseDNS {{ security_ssh_usedns }}"
-    - regexp: "^#\s*PermitEmptyPasswords.*$"
+    - regexp: "PermitEmptyPasswords"
       line: "PermitEmptyPasswords {{ security_ssh_permit_empty_password }}"
-    - regexp: "^#\s*ChallengeResponseAuthentication.*$"
+    - regexp: "ChallengeResponseAuthentication"
       line: "ChallengeResponseAuthentication {{ security_ssh_challenge_response_auth }}"
-    - regexp: "^#\s*GSSAPIAuthentication.*$"
+    - regexp: "GSSAPIAuthentication"
       line: "GSSAPIAuthentication {{ security_ssh_gss_api_authentication }}"
-    - regexp: "^#\s*X11Forwarding.*$"
+    - regexp: "X11Forwarding"
       line: "X11Forwarding {{ security_ssh_x11_forwarding }}"
   notify: restart ssh
 

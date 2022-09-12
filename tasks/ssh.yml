@@ -10,14 +10,6 @@
     regex: "^(#)?{{item.key}}"
     line: "{{item.key}} {{item.value}}"
     state: present
-  notify: restart ssh
-
-- name: Update SSH configuration to be more secure.
-  lineinfile:
-    dest: "{{ security_ssh_config_path }}"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    state: present
     validate: 'sshd -T -f %s'
     mode: 0644
   with_items:
@@ -37,7 +29,7 @@
       value: "{{ security_ssh_gss_api_authentication }}"
     - key: "X11Forwarding"
       value: "{{ security_ssh_x11_forwarding }}"
-  notify: restart ssh
+  notify: restart ssh 
 
 - name: Add configured users allowed to connect over ssh
   lineinfile:

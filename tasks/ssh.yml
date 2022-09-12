@@ -13,7 +13,7 @@
     validate: 'sshd -T -f %s'
     mode: 0644
   with_items:
-    - regexp: '^#\s*PasswordAuthentication.*$'
+    - regexp: 'PasswordAuthentication'
       line: 'PasswordAuthentication {{ security_ssh_password_authentication }}'
     - regexp: "^#\s*PermitRootLogin.*$"
       line: "PermitRootLogin {{ security_ssh_permit_root_login }}"
